@@ -22,7 +22,10 @@ def average(a: float, b: float, c: float) -> float:
 
 def to_radians(angle_degs: float, angle_mins: float, angle_secs: float) -> float:
     # Convertir en radians un angle fourni au départ en degrés
-    rad = (angle_degs*0.017453292519943) + (angle_mins*0.00029088820866572) + (angle_secs*0.0000048481368110954)
+    deg_rad = 0.017453292519943
+    min_rad = 0.00029088820866572
+    sec_rad = 0.0000048481368110954
+    rad = (angle_degs * deg_rad) + (angle_mins*min_rad) + (angle_secs*sec_rad)
     return rad
 
 
@@ -53,8 +56,8 @@ def main() -> None:
 
     print(f"Moyenne des nombres 2, 4, 6: {average(2, 4, 6)}")
 
-    print(f"Conversion de 100 degres, 2 minutes et 45 secondes en radians: {to_radians(180, 2, 45)}")
-    
+    print(f"Conversion de 180 degres, 2 minutes et 45 secondes en radians: {to_radians(180, 2, 45)}")
+
     degrees, minutes, seconds = to_degrees(1.0)
     print(f"Conversion de 1 radian en degres: {degrees} degres, {minutes} minutes et {seconds} secondes")
 
