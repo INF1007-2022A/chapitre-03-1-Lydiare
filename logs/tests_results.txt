@@ -1,40 +1,48 @@
 test_average (__main__.TestExercice) ... ok
 test_square (__main__.TestExercice) ... ok
 test_square_root (__main__.TestExercice) ... ok
-test_to_celsius (__main__.TestExercice) ... ERROR
-test_to_degrees (__main__.TestExercice) ... ERROR
-test_to_farenheit (__main__.TestExercice) ... ERROR
+test_to_celsius (__main__.TestExercice) ... ok
+test_to_degrees (__main__.TestExercice) ... FAIL
+test_to_farenheit (__main__.TestExercice) ... FAIL
 test_to_radians (__main__.TestExercice) ... FAIL
 
 ======================================================================
-ERROR: test_to_celsius (__main__.TestExercice)
+FAIL: test_to_degrees (__main__.TestExercice)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "test_exercice.py", line 92, in test_to_celsius
-    output = [exercice.to_celsius(v) for v in values]
-  File "test_exercice.py", line 92, in <listcomp>
-    output = [exercice.to_celsius(v) for v in values]
-AttributeError: module 'exercice' has no attribute 'to_celsius'
+  File "test_exercice.py", line 83, in test_to_degrees
+    self.assertListEqual(
+AssertionError: Lists differ: [(114.59155902616465, 35.493541569878744, 2[196 chars]568)] != [(79.0980174562859, 5.881047377154118, 29.6[197 chars]998)]
+
+First differing element 0:
+(114.59155902616465, 35.493541569878744, 29.612494192724625)
+(79.0980174562859, 5.881047377154118, 29.612494192724625)
+
+- [(114.59155902616465, 35.493541569878744, 29.612494192724625),
+-  (-229.1831180523293, 49.01291686024251, 0.7750116145507491),
+-  (286.4788975654116, 28.73385392469686, 44.031235481811564),
+-  (234.33973820850667, 20.384292510400428, 23.05755062402568)]
++ [(79.0980174562859, 5.881047377154118, 29.612494192724625),
++  (-278.1960349125718, 48.23790524569176, 0.7750116145507491),
++  (257.74504364071475, -15.297381557114704, 44.031235481811564),
++  (213.95544569810457, -2.673258113725865, 23.057550624127998)] : Mauvais calcul de radians -> degres
 
 ======================================================================
-ERROR: test_to_degrees (__main__.TestExercice)
+FAIL: test_to_farenheit (__main__.TestExercice)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "test_exercice.py", line 80, in test_to_degrees
-    output = [exercice.to_degrees(v) for v in values]
-  File "test_exercice.py", line 80, in <listcomp>
-    output = [exercice.to_degrees(v) for v in values]
-AttributeError: module 'exercice' has no attribute 'to_degrees'
+  File "test_exercice.py", line 107, in test_to_farenheit
+    self.assertListEqual(
+AssertionError: Lists differ: [32.0, -13.0, 843.8] != [32.0, -13.0, 843.8000000000001]
 
-======================================================================
-ERROR: test_to_farenheit (__main__.TestExercice)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "test_exercice.py", line 104, in test_to_farenheit
-    output = [exercice.to_farenheit(v) for v in values]
-  File "test_exercice.py", line 104, in <listcomp>
-    output = [exercice.to_farenheit(v) for v in values]
-AttributeError: module 'exercice' has no attribute 'to_farenheit'
+First differing element 2:
+843.8
+843.8000000000001
+
+- [32.0, -13.0, 843.8]
++ [32.0, -13.0, 843.8000000000001]
+?                    ++++++++++++
+ : Mauvais calcul de celsius -> farenheit
 
 ======================================================================
 FAIL: test_to_radians (__main__.TestExercice)
@@ -56,6 +64,6 @@ First differing element 0:
  : Mauvais calcul de degres -> radians
 
 ----------------------------------------------------------------------
-Ran 7 tests in 0.001s
+Ran 7 tests in 0.005s
 
-FAILED (failures=1, errors=3)
+FAILED (failures=3)
