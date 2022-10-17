@@ -29,24 +29,23 @@ def to_radians(angle_degs: float, angle_mins: float, angle_secs: float) -> float
     return rad
 
 
-# def to_degrees(angle_rads: float) -> tuple:
-#     #convertir en degrés, minutes, secondes un angles fourni au départ en raidans
-#     degres = angle_rads * 180 / math.pi
-#     min = (degres - math.pi)
-#     seconde = degres
-#     return (degres, min, )
-#
-#
-# def to_celsius(temperature: float) -> float:
-#     # Convertir en degrés Celsius une température exprimée au départ en degrés Fahrenheit
-#
-#     return (temperature - 32 ) / 1.8
-#
-#
-# def to_farenheit(temperature: float) -> float:
-#     # convertir en f une température exprimée en c
-#
-#     return (temperature - 32) * 1.8
+def to_degrees(angle_rads: float) -> tuple:
+    #convertir en degrés, minutes, secondes un angles fourni au départ en radians
+    degrees = angle_rads * 180 / math.pi
+    minutes = degrees % 1 * 60
+    seconds = minutes % 1 * 60
+    return (degrees, minutes, seconds)
+
+
+def to_celsius(temperature: float) -> float:
+    # Convertir en degrés Celsius une température exprimée au départ en degrés Fahrenheit
+    celsius = (temperature - 32)/(9/5)
+    return celsius
+
+
+def to_farenheit(temperature: float) -> float:
+    # convertir en f une température exprimée en c
+    return (temperature * 9/5) +32
 
 
 def main() -> None:
